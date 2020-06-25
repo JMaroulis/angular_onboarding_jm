@@ -43,7 +43,7 @@ export class EnterGameFormComponent{
   public submitError = '';
 
   handleSubmit(formValue, isValid: boolean){
-    if(isValid){
+    if (isValid){
       this.getGameMovesService.loadGameMoves(this.gamename, this.password)
       .subscribe((response) => {
         if(response.body['Status']){
@@ -55,7 +55,6 @@ export class EnterGameFormComponent{
           this.router.navigate(['/gamemoves', this.gamename]);
         }
       });
-
     }
   }
 }

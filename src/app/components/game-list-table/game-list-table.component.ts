@@ -71,14 +71,11 @@ export class GameListTableComponent{
   }
 
   selectGame(game){
-    console.log(game[0], game[1], game[2]);
     this.selectedGame = game[0];
 
     // close any open forms
     this.deletingGame = false;
     this.enteringGame = false;
-
-    console.log(this.selectedGame);
   }
 
   newGame(){

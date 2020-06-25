@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {GetGameMovesService} from '../../services/get-game-moves.service';
 import {ActivatedRoute} from '@angular/router';
+import {BehaviorSubject} from 'rxjs';
 
 @Component({
   selector: 'app-game-move-table',
@@ -33,7 +34,7 @@ export class GameMoveTableComponent{
       this.gamename = params.get('gamename');
     });
 
-    this.moves = this.getGameMovesService.dispenseGameMoves();
+    this.getGameMovesService.gameMoves.subscribe(value => {this.moves = value;});
   }
 
   newMoveForm(){
