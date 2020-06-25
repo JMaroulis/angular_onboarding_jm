@@ -1,0 +1,31 @@
+table, td, th{
+  border: 1px solid black;
+  border-collapse: collapse;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+table{
+  width: 70%;
+}
+
+th{
+  height: 40px;
+  text-align: center;
+  background-color: #44318D;
+  color: darkgrey;
+}
+
+td{
+  text-align: left;
+  padding: 5px 10px 5px 10px;
+}
+
+.highlighted {
+  background-color: darkgrey;
+}
+
+tr:hover {
+  background-color: lightgrey;
+}
+
+
