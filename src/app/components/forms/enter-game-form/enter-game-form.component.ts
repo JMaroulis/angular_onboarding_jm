@@ -47,11 +47,9 @@ export class EnterGameFormComponent{
       this.getGameMovesService.loadGameMoves(this.gamename, this.password)
       .subscribe((response) => {
         if(response.body['Status']){
-          console.log(response.body['Status']);
           this.submitError = response.body['Status'];
         }
         else {
-          console.log(response);
           this.router.navigate(['/gamemoves', this.gamename]);
         }
       });
