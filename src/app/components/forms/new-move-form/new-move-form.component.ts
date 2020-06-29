@@ -60,13 +60,13 @@ export class NewMoveFormComponent{
     if(isValid){
       this.putmoveservice.putNewMove(this.gameName, this.newMove.move).subscribe((response) => {
         if(response.body['Status'] === `Successfully created move in ${this.gameName}.`){
-          console.log(response);
           this.router.navigate(['/gamelist']);
         }
         else{
           console.log(response.body['Status']);
           this.submitError = response.body['Status'];
         }
+        console.log(response);
       });
     }
   }

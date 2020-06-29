@@ -52,6 +52,7 @@ export class EnterGameFormComponent{
         else {
           this.router.navigate(['/gamemoves', this.gamename]);
         }
+        console.log(response);
       });
     }
   }

@@ -1,20 +1,20 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { GetGameMovesService } from '../../services/get-game-moves.service';
-import {PutGameService} from '../../services/put-game.service';
+import { PutMoveService } from '../../services/put-move.service';
 
 describe('GetGameMovesService', () => {
-  let service: PutGameService;
+  let service: PutMoveService;
   let httpTestingController: HttpTestingController;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [PutGameService],
+      providers: [PutMoveService],
     });
 
     httpTestingController = TestBed.inject(HttpTestingController);
-    service = TestBed.inject(PutGameService);
+    service = TestBed.inject(PutMoveService);
 
   });
 
@@ -26,23 +26,16 @@ describe('GetGameMovesService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('Should return \'Status: Successfully created [gamename].\'.', () => {
+  it('Should return \'Status: Successfully created move in [gamename].\'.', () => {
 
     const PUT_LAMBDA_URL = 'https://908n4m5n4c.execute-api.eu-west-2.amazonaws.com/v1/onboarding';
-    const mockData = { Status: 'Successfully created aaa.' };
+    const mockData = { Status: 'Successfully created move in aaa.' };
 
-    const newgame = {
-      gamename: 'aaa',
-      password: 'bbb',
-      player1: 'ccc',
-      player2: 'ddd'
-    };
-
-    service.putNewGame(newgame).subscribe((response) => {
-      expect(response.body['Status'] === 'Successfully created aaa.').toBeTrue();
+    service.putNewMove('aaa', 'example move').subscribe((response) => {
+      expect(response.body['Status'] === 'Successfully created move in aaa.').toBeTrue();
     });
 
-    const req = httpTestingController.expectOne(PUT_LAMBDA_URL + '?task=newgame&gamename=aaa&password=bbb&player1name=ccc&player2name=ddd');
+    const req = httpTestingController.expectOne(PUT_LAMBDA_URL + '?task=newmove&gamename=aaa&move=example%20move');
     expect(req.request.method).toEqual('POST');
 
     req.flush(mockData);
