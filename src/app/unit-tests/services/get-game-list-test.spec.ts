@@ -4,8 +4,7 @@ import { GetGameMovesService } from '../../services/get-game-moves.service';
 import {GetGamesListService} from '../../services/get-games-list.service';
 
 describe('GetGameMovesService', () => {
-  let service: GetGameMovesService;
-  let service2: GetGamesListService;
+  let service: GetGamesListService;
   let httpTestingController: HttpTestingController;
 
   beforeEach(() => {
@@ -15,8 +14,7 @@ describe('GetGameMovesService', () => {
     });
 
     httpTestingController = TestBed.inject(HttpTestingController);
-    service = TestBed.inject(GetGameMovesService);
-    service2 = TestBed.inject(GetGamesListService);
+    service = TestBed.inject(GetGamesListService);
 
   });
 
@@ -44,7 +42,7 @@ describe('GetGameMovesService', () => {
         }]
     };
 
-    service2.getGamesListFromLambda().subscribe((response) => {
+    service.getGamesListFromLambda().subscribe((response) => {
       const game1 = response.body["gamelist"][0];
       expect(game1.gamename === 'aaa').toBeTrue();
       expect(game1.player1 === 'bbb').toBeTrue();
